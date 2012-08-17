@@ -3,11 +3,23 @@ django-skeleton
 
 A default project structure skeleton for a Django, includes Twitter Bootstrap. (Always updated to latest Django/TB versions)
 
+Includes an easy to use setup script, simply execute 
+    
+    python setup.py
+    
+after cloning the repo (git clone https://github.com/mschettler/django-skeleton.git)
+
+#Video Demo
+www.youtube.com/watch?v=4GLiMWXo0ws
+
+
+#Versions Used
+
     Django 1.4
     Twitter Bootstrap 2.0.4
 
 
-Django Skeleton Project
+#Django Skeleton Project
 
 
     ├── myproject
