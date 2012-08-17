@@ -7,7 +7,7 @@ after cloning the repo
 
     git clone https://github.com/mschettler/django-skeleton.git
 
-simple execute
+simply execute
     
     python setup.py
 
