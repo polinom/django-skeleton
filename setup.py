@@ -59,7 +59,7 @@ def rename(oldpath, newpath):
     if not os.path.exists(oldpath):
         raise Exception('Cannot rename, oldpath [%s] does not exist' % old)
 
-    # print 'would have renamed %s to %s' % (oldpath, newpath)
+    print '%s: Renamed %s to %s' % (__file__, oldpath, newpath)
     os.rename(oldpath, newpath)
 
 
