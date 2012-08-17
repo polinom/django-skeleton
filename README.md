@@ -11,7 +11,6 @@ simply execute
     
     python setup.py
 
-
 last step
 
     python manage.py runserver
@@ -23,19 +22,16 @@ Done!
 ![Example](https://raw.github.com/mschettler/django-skeleton/master/screenshot.png)
 
 
-
 #Video Demo
 www.youtube.com/watch?v=4GLiMWXo0ws
 
 
 #Versions Used
-
     Django 1.4
     Twitter Bootstrap 2.0.4
 
 
 #Django Skeleton Project
-
 
     ├── myproject
         ├── README.md
@@ -82,8 +78,8 @@ www.youtube.com/watch?v=4GLiMWXo0ws
     
     
     
-Twitter Bootstrap
+#Twitter Bootstrap
 http://twitter.github.com/bootstrap/
 
-Django
+#Django
 https://www.djangoproject.com/
