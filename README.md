@@ -1,8 +1,8 @@
 django-skeleton
 ===============
 
-A default project structure skeleton for a fresh Django project. Also includes Twitter Bootstrap, and a setup script so easy your kid could use it.
-    
+A default project structure skeleton for a fresh Django project. Includes Twitter Bootstrap http://twitter.github.com/bootstrap/.
+
 after cloning the repo
 
     git clone https://github.com/mschettler/django-skeleton.git
