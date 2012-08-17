@@ -83,7 +83,7 @@ def rename(oldpath, newpath):
         raise Exception('Cannot rename, oldpath [%s] does not exist' % old)
 
     print '%s: Renamed %s to %s' % (__file__, oldpath, newpath)
-    os.rename(oldpath, newpath)
+    # os.rename(oldpath, newpath)
 
 
 ################################################################################
@@ -164,20 +164,48 @@ print BAR80
 
 if not new_app_name and not new_project_name:
     print 'You decided not to rename your project or app. This script has nothing to do. Goodbye!'
+    sys.exit(0)
 
+
+# this is a list of tuples, with (orig_path, dest_path)
+# we cache all renames till the end, so we can print them out
+# and confirm them with the user
+rename_cache = []
 
 # walk the directory and perform renames
 for root, dirs, files in os.walk(CURRENT_DIRECTORY):
-    
+
+    # ignore git metadata    
     if '.git' in root:
         continue
 
-    print 'root: ', root
-    print 'dirs: ', dirs
-    print 'files: ', files
-    if CURRENT_PROJECT_NAME in dirs or CURRENT_PROJECT_NAME in files:
-        rename(os.path.join(root, CURRENT_PROJECT_NAME), os.path.join(root, new_project_name))
+    if new_project_name and CURRENT_PROJECT_NAME in dirs+files:
+        rename_cache.append((os.path.join(root, CURRENT_PROJECT_NAME), os.path.join(root, new_project_name)))
+    if new_app_name and CURRENT_APP_NAME in dirs+files:
+        rename_cache.append((os.path.join(root, CURRENT_APP_NAME), os.path.join(root, new_app_name)))
 
+
+# reverse this so execution renames the deepest directories first
+rename_cache.reverse()
+
+
+
+if not rename_cache:
+    print 'Error: Script cannot continue'
+    print '    * We did not find any files to rename. This is considered an error'
+    print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
+    sys.exit(1)
+
+for trename in rename_cache:
+    print 'RENAME "%s" => "%s"' % trename
+
+print 'We are about to rename %d files, please confirm that you would like to do this [y/n] (default y): ' % len(rename_cache)
+response = get_user_feedback().lower()
+if 'n' in response:
+    print 'Okay, we won\'t do anything. Goodbye!'
+    sys.exit(0)
+
+# do renames
 
 
 
