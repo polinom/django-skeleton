@@ -52,3 +52,8 @@ Django Skeleton Project
                 └── bootstrap.min.js
     
     9 directories, 34 files
+
+
+#Usage
+1. Simply rename *myproject/* (both instances) to whatever you want your outer project to be called.
+2. Rename *myfirstapp/* to whatever you want your first application in this project to be named
