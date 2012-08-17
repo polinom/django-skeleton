@@ -2,7 +2,7 @@
 #
 # This script is designed to  rename the default skeleton project name (myproject) and app (myfirstapp) to names you choose
 #
-import os, sys
+import os, sys, string
 
 CURRENT_DIRECTORY    = os.getcwd()
 CURRENT_PROJECT_NAME = 'myproject'
@@ -24,6 +24,15 @@ def get_user_feedback():
         sys.exit(0)
 
 
+def is_alphanumeric(instr):
+    """ 
+    return false if instr contains anything other than
+    letters or numbers
+    """
+    allowed = string.letters + string.digits + '_' + '-'
+    return not bool(set(instr) - set(allowed))
+
+
 def validate_name(name):
     """ 
     returns None on success, otherwise an error message is returned describing
@@ -33,6 +42,19 @@ def validate_name(name):
     if ' ' in name:
         return 'Error: Name cannot contain spaces'
     
+    if not is_alphanumeric(name):
+        return 'Error: Name can only contain letters and numbers'
+
+    if len(name) < 1:
+        return 'Error: Name must have length'
+
+    if name[0] in string.digits:
+        return 'Error: Name cannot start with a digit'
+
+    if name[0] in '_-':
+        return 'Error: Name can only start with a letter, not an underscore or dash'
+
+
     # name passed validation
     return None
 
@@ -52,6 +74,7 @@ def get_folder_list_for_directory(path, ignorehidden=True):
 
 
 def rename(oldpath, newpath):
+    """ similar to os.rename, performs some additional checks """
     if not (oldpath and newpath):
         raise Exception('Failed to supply a paramter to rename()')
     if os.path.exists(newpath):
@@ -96,16 +119,17 @@ while inputerror:
     print 'Your current project name is "%s". Please enter a new outer project name (blank to skip): ' % CURRENT_PROJECT_NAME
     new_project_name = get_user_feedback()
 
-    inputerror = validate_name(new_project_name)
-    if inputerror:
-        print inputerror
+    if new_project_name:
+        inputerror = validate_name(new_project_name)
+        if inputerror:
+            print inputerror
+            continue
 
-# they entered a valid name
-if new_project_name:
-    print 'You entered "%s" as your new project name.' % new_project_name
-else:
-    print 'You skipped renaming your default project. The current name of "%s" still stands.' % CURRENT_PROJECT_NAME
+        print 'You entered "%s" as your new project name.' % new_project_name
+    else:
+        print 'You skipped renaming your default project. The current name of "%s" still stands.' % CURRENT_PROJECT_NAME
 
+    break
 
 ################################################################################
 # Main script routine - get a new name for the app
@@ -120,16 +144,17 @@ while inputerror:
     print 'Your current default app name is "%s". Please enter a new app name (blank to skip): ' % CURRENT_APP_NAME
     new_app_name = get_user_feedback()
 
-    inputerror = validate_name(new_app_name)
-    if inputerror:
-        print inputerror
+    if new_app_name:
+        inputerror = validate_name(new_app_name)
+        if inputerror:
+            print inputerror
+            continue
 
-# they entered a valid name
-if new_app_name:
-    print 'You entered "%s" as your new default app name.' % new_app_name
-else:
-    print 'You skipped renaming your default app. The current name of "%s" still stands.' % CURRENT_APP_NAME
+        print 'You entered "%s" as your new default app name.' % new_app_name
+    else:
+        print 'You skipped renaming your default app. The current name of "%s" still stands.' % CURRENT_APP_NAME
 
+    break
 
 ################################################################################
 # Main script routine - actually rename projects
