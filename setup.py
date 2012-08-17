@@ -83,7 +83,7 @@ def rename(oldpath, newpath):
         raise Exception('Cannot rename, oldpath [%s] does not exist' % old)
 
     print '%s: Renamed %s to %s' % (__file__, oldpath, newpath)
-    # os.rename(oldpath, newpath)
+    os.rename(oldpath, newpath)
 
 
 def replace_text_infile(filepath, find, replace):
@@ -96,12 +96,9 @@ def replace_text_infile(filepath, find, replace):
     with open(filepath, 'r') as fh:
         fdata = fh.read()
 
-    fdata.replace(find, replace)
-
     with open(filepath, 'w') as fh:
         print '%s: replaced text "%s" in file "%s" with text "%s"' % (__file__, find, filepath, replace)
-        # fh.write(fdata)
-
+        fh.write(fdata.replace(find, replace))
 
 
 ################################################################################
