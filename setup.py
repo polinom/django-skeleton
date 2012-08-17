@@ -86,6 +86,24 @@ def rename(oldpath, newpath):
     # os.rename(oldpath, newpath)
 
 
+def replace_text_infile(filepath, find, replace):
+    if not (filepath and find):
+        raise Exception('Failed to supply a parameter to replace_text_infile()')
+    if not os.path.isfile(filepath):
+        raise Exception('Cannot replace, filepath [%s] does not exists' % filepath)
+
+
+    with open(filepath, 'r') as fh:
+        fdata = fh.read()
+
+    fdata.replace(find, replace)
+
+    with open(filepath, 'w') as fh:
+        print '%s: replaced text "%s" in file "%s" with text "%s"' % (__file__, find, filepath, replace)
+        # fh.write(fdata)
+
+
+
 ################################################################################
 # Some sanity checks
 ################################################################################
@@ -156,10 +174,6 @@ while inputerror:
 
     break
 
-################################################################################
-# Main script routine - actually rename projects
-################################################################################
-
 print BAR80
 
 if not new_app_name and not new_project_name:
@@ -167,10 +181,19 @@ if not new_app_name and not new_project_name:
     sys.exit(0)
 
 
+################################################################################
+# Main script routine - build a list of files that need to be renamed
+################################################################################
+
 # this is a list of tuples, with (orig_path, dest_path)
 # we cache all renames till the end, so we can print them out
 # and confirm them with the user
 rename_cache = []
+
+
+# file string replace cache
+# contains tuples, (path_to_file, find_string, replace_string)
+file_string_replace = []
 
 # walk the directory and perform renames
 for root, dirs, files in os.walk(CURRENT_DIRECTORY):
@@ -184,10 +207,24 @@ for root, dirs, files in os.walk(CURRENT_DIRECTORY):
     if new_app_name and CURRENT_APP_NAME in dirs+files:
         rename_cache.append((os.path.join(root, CURRENT_APP_NAME), os.path.join(root, new_app_name)))
 
+    # build a list of files that need to have strings replaced
+    for f in files:
 
-# reverse this so execution renames the deepest directories first
-rename_cache.reverse()
+        fullpath = os.path.join(root, f)
 
+        # ignore hidden files, this file, and non-python files
+        if f.startswith('.') or f == __file__ or not f.endswith('.py'):
+            continue
+
+        with open(fullpath, 'r') as fh:
+            fdata = fh.read()
+
+        if new_project_name and CURRENT_PROJECT_NAME in fdata:
+            # fdata = fdata.replace(CURRENT_PROJECT_NAME, new_project_name)
+            file_string_replace.append((fullpath, CURRENT_PROJECT_NAME, new_project_name))
+        if new_app_name and CURRENT_APP_NAME in fdata:
+            # fdata = fdata.replace(CURRENT_APP_NAME, new_app_name)
+            file_string_replace.append((fullpath, CURRENT_APP_NAME, new_app_name))
 
 
 if not rename_cache:
@@ -196,20 +233,70 @@ if not rename_cache:
     print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
     sys.exit(1)
 
+# reverse this so execution renames the deepest directories first
+rename_cache.reverse()
+
+if not file_string_replace:
+    print 'Error: Script cannot continue'
+    print '    * We did not find any files in which to replace project/app text. This is considered an error'
+    print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
+    sys.exit(1)
+
+
+################################################################################
+# Main script routine - tell user what we are about to do, and ask for feedback
+################################################################################
+
 for trename in rename_cache:
     print 'RENAME "%s" => "%s"' % trename
 
-print 'We are about to rename %d files, please confirm that you would like to do this [y/n] (default y): ' % len(rename_cache)
-response = get_user_feedback().lower()
-if 'n' in response:
+
+for treplace in file_string_replace:
+    print 'MODIFY FILE "%s" REPLACE "%s" WITH "%s"' % treplace
+
+
+print 'We are about to rename %d files, and modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache), len(file_string_replace))
+if 'n' in get_user_feedback().lower():
     print 'Okay, we won\'t do anything. Goodbye!'
     sys.exit(0)
 
+
+################################################################################
+# Main script routine - actually do all processing
+################################################################################
+
+print BAR80
+
+# do text replace
+for treplace in file_string_replace:
+    replace_text_infile(*treplace) # unpack tuple
+
+
+
 # do renames
+for trename in rename_cache:
+    rename(*trename) # unpack tuple
 
 
+################################################################################
+# Final sanity checks
+################################################################################
+
+if CURRENT_PROJECT_NAME in get_folder_list_for_directory(CURRENT_DIRECTORY):
+    print 'Error: Script hit fatal error'
+    print '    * It seems "%s" still exists after we were supposed to rename it. Not sure what happened... bailing...' % CURRENT_PROJECT_NAME
+    print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
+    sys.exit(1)
 
 
+################################################################################
+# Done!
+################################################################################
+
+print BAR80
+print '* Your project is ready. Hope you enjoyed django-skeleton!'
+print '* Please checkout my website http://mschettler.com or fork this repo at %s' % (GITHUB_CLONE_CMD.split(' ')[-1])
+sys.exit(0)
 
 
 
