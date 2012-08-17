@@ -9,6 +9,11 @@ Includes an easy to use setup script, simply execute
     
 after cloning the repo (git clone https://github.com/mschettler/django-skeleton.git)
 
+#Screenshot
+![Example](https://raw.github.com/mschettler/django-skeleton/master/screenshot.png)
+
+
+
 #Video Demo
 www.youtube.com/watch?v=4GLiMWXo0ws
 
