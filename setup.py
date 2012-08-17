@@ -2,7 +2,7 @@
 #
 # This script is designed to  rename the default skeleton project name (myproject) and app (myfirstapp) to names you choose
 #
-import os, sys, string
+import os, sys, string, shutil
 
 CURRENT_DIRECTORY    = os.getcwd()
 CURRENT_PROJECT_NAME = 'myproject'
@@ -83,7 +83,7 @@ def rename(oldpath, newpath):
         raise Exception('Cannot rename, oldpath [%s] does not exist' % old)
 
     print '%s: Renamed %s to %s' % (__file__, oldpath, newpath)
-    os.rename(oldpath, newpath)
+    shutil.move(oldpath, newpath)
 
 
 def replace_text_infile(filepath, find, replace):
@@ -280,6 +280,30 @@ if CURRENT_PROJECT_NAME in get_folder_list_for_directory(CURRENT_DIRECTORY):
     print '    * It seems "%s" still exists after we were supposed to rename it. Not sure what happened... bailing...' % CURRENT_PROJECT_NAME
     print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
     sys.exit(1)
+
+
+################################################################################
+# Offer to remove git metadata, README, and this file
+################################################################################
+
+print 'If you would like, we can remove the git metadata, github README.md, and this setup.py script'
+print '    * This will leave django-skeleton as a clean folder with your fresh django project inside'
+print 'Would you like to do this? [y/n] (default y): '
+if 'n' in get_user_feedback().lower():
+    print 'Okay, we won\'t remove metadata'
+else:
+    # remove metadata
+    toremove = [os.path.join(CURRENT_DIRECTORY, 'setup.py'), os.path.join(CURRENT_DIRECTORY, 'README.md'), os.path.join(CURRENT_DIRECTORY, '.git'), os.path.join(CURRENT_DIRECTORY, '.gitignore')]
+
+    for f in toremove:
+        try:
+            if os.path.isdir(f):
+                shutil.rmtree(f)
+            else:
+                os.remove(f)
+            print 'REMOVED "%s"' % f
+        except:
+            print 'FAILED TO REMOVE "%s"' % f
 
 
 ################################################################################
