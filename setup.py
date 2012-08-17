@@ -213,17 +213,15 @@ for root, dirs, files in os.walk(CURRENT_DIRECTORY):
         fullpath = os.path.join(root, f)
 
         # ignore hidden files, this file, and non-python files
-        if f.startswith('.') or f == __file__ or not f.endswith('.py'):
+        if f.startswith('.') or f == __file__.lstrip('./') or not f.endswith('.py'):
             continue
 
         with open(fullpath, 'r') as fh:
             fdata = fh.read()
 
         if new_project_name and CURRENT_PROJECT_NAME in fdata:
-            # fdata = fdata.replace(CURRENT_PROJECT_NAME, new_project_name)
             file_string_replace.append((fullpath, CURRENT_PROJECT_NAME, new_project_name))
         if new_app_name and CURRENT_APP_NAME in fdata:
-            # fdata = fdata.replace(CURRENT_APP_NAME, new_app_name)
             file_string_replace.append((fullpath, CURRENT_APP_NAME, new_app_name))
 
 
@@ -270,8 +268,6 @@ print BAR80
 # do text replace
 for treplace in file_string_replace:
     replace_text_infile(*treplace) # unpack tuple
-
-
 
 # do renames
 for trename in rename_cache:
