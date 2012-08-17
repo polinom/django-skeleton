@@ -3,8 +3,8 @@ django-skeleton
 
 A default project structure skeleton for a Django, includes Twitter Bootstrap. (Always updated to latest Django/TB versions)
 
-    Using Django 1.4
-    Using Twitter Bootstrap 2.0.4
+    Django 1.4
+    Twitter Bootstrap 2.0.4
 
 
 Django Skeleton Project
