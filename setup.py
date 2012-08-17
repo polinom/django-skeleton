@@ -143,9 +143,13 @@ if not new_app_name and not new_project_name:
 
 # walk the directory and perform renames
 for root, dirs, files in os.walk(CURRENT_DIRECTORY):
-    # print 'root: ', root
-    # print 'dirs: ', dirs
-    # print 'files: ', files
+    
+    if root.endswith('.git'):
+        continue
+
+    print 'root: ', root
+    print 'dirs: ', dirs
+    print 'files: ', files
     if CURRENT_PROJECT_NAME in dirs or CURRENT_PROJECT_NAME in files:
         rename(os.path.join(root, CURRENT_PROJECT_NAME), os.path.join(root, new_project_name))
 
