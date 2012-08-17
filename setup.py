@@ -293,7 +293,7 @@ if 'n' in get_user_feedback().lower():
     print 'Okay, we won\'t remove metadata'
 else:
     # remove metadata
-    toremove = [os.path.join(CURRENT_DIRECTORY, 'setup.py'), os.path.join(CURRENT_DIRECTORY, 'README.md'), os.path.join(CURRENT_DIRECTORY, '.git'), os.path.join(CURRENT_DIRECTORY, '.gitignore')]
+    toremove = [os.path.join(CURRENT_DIRECTORY, 'setup.py'), os.path.join(CURRENT_DIRECTORY, 'README.md'), os.path.join(CURRENT_DIRECTORY, '.git'), os.path.join(CURRENT_DIRECTORY, '.gitignore'), os.path.join(CURRENT_DIRECTORY, 'screenshot.png')]
 
     for f in toremove:
         try:
