@@ -20,8 +20,6 @@ Done!
 
 #Screenshot
 ![Example](https://raw.github.com/mschettler/django-skeleton/master/screenshot.png)
-
-
 #Video Demo
 www.youtube.com/watch?v=4GLiMWXo0ws
 
