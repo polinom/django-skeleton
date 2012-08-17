@@ -1,7 +1,7 @@
 django-skeleton
 ===============
 
-A default project structure skeleton for a Django, includes Twitter Bootstrap. (Always updated to latest Django/TB versions)
+A default project structure skeleton for a Django, includes Twitter Bootstrap. django-skeleton will always be current with latest Django/Twitter-Bootstrap versions
 
 Includes an easy to use setup script, simply execute 
     
@@ -71,3 +71,11 @@ www.youtube.com/watch?v=4GLiMWXo0ws
                 └── bootstrap.min.js
     
     9 directories, 34 files
+    
+    
+    
+Twitter Bootstrap
+http://twitter.github.com/bootstrap/
+
+Django
+https://www.djangoproject.com/
