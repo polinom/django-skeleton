@@ -3,9 +3,14 @@ django-skeleton
 
 A default project structure skeleton for a Django, includes Twitter Bootstrap. (Always updated to latest Django/TB versions)
 
+    Using Django 1.4
+    Using Twitter Bootstrap 2.0.4
 
-    ├── README.md
-    └── myproject
+
+Django Skeleton Project
+
+
+    ├── myproject
         ├── README.md
         ├── manage.py
         ├── myfirstapp
@@ -17,9 +22,7 @@ A default project structure skeleton for a Django, includes Twitter Bootstrap. (
         │   └── views.py
         ├── myproject
         │   ├── __init__.py
-        │   ├── __init__.pyc
         │   ├── settings.py
-        │   ├── settings.pyc
         │   ├── urls.py
         │   └── wsgi.py
         └── src
