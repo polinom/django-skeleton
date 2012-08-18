@@ -275,7 +275,7 @@ for trename in rename_cache:
 # Final sanity checks
 ################################################################################
 
-if CURRENT_PROJECT_NAME in get_folder_list_for_directory(CURRENT_DIRECTORY):
+if new_project_name and CURRENT_PROJECT_NAME in get_folder_list_for_directory(CURRENT_DIRECTORY):
     print 'Error: Script hit fatal error'
     print '    * It seems "%s" still exists after we were supposed to rename it. Not sure what happened... bailing...' % CURRENT_PROJECT_NAME
     print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
