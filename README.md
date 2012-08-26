@@ -26,7 +26,7 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 #Versions Used
     Django 1.4
-    Twitter Bootstrap 2.0.4
+    Twitter Bootstrap 2.1.0
 
 
 #Django Skeleton Project
@@ -57,18 +57,6 @@ www.youtube.com/watch?v=4GLiMWXo0ws
             │   ├── glyphicons-halflings-white.png
             │   └── glyphicons-halflings.png
             └── js
-                ├── bootstrap-alert.js
-                ├── bootstrap-button.js
-                ├── bootstrap-carousel.js
-                ├── bootstrap-collapse.js
-                ├── bootstrap-dropdown.js
-                ├── bootstrap-modal.js
-                ├── bootstrap-popover.js
-                ├── bootstrap-scrollspy.js
-                ├── bootstrap-tab.js
-                ├── bootstrap-tooltip.js
-                ├── bootstrap-transition.js
-                ├── bootstrap-typeahead.js
                 ├── bootstrap.js
                 └── bootstrap.min.js
     
