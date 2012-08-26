@@ -178,6 +178,11 @@ if not new_app_name and not new_project_name:
     sys.exit(0)
 
 
+if new_app_name == new_project_name:
+    print 'You must select different names for your project and first application. This script cannot continue.'
+    sys.exit(1)
+    
+
 ################################################################################
 # Main script routine - build a list of files that need to be renamed
 ################################################################################
@@ -242,15 +247,16 @@ if not file_string_replace:
 # Main script routine - tell user what we are about to do, and ask for feedback
 ################################################################################
 
-for trename in rename_cache:
-    print 'RENAME "%s" => "%s"' % trename
+# for trename in rename_cache:
+#     print 'RENAME "%s" => "%s"' % trename
 
 
-for treplace in file_string_replace:
-    print 'MODIFY FILE "%s" REPLACE "%s" WITH "%s"' % treplace
+# for treplace in file_string_replace:
+    # print 'MODIFY FILE "%s" REPLACE "%s" WITH "%s"' % treplace
 
 
-print 'We are about to rename %d files, and modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache), len(file_string_replace))
+# print 'We are about to rename %d files, and modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache), len(file_string_replace))
+print 'We are about to modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache) + len(file_string_replace))
 if 'n' in get_user_feedback().lower():
     print 'Okay, we won\'t do anything. Goodbye!'
     sys.exit(0)
@@ -286,6 +292,7 @@ if new_project_name and CURRENT_PROJECT_NAME in get_folder_list_for_directory(CU
 # Offer to remove git metadata, README, and this file
 ################################################################################
 
+print BAR80
 print 'If you would like, we can remove the git metadata, github README.md, and this setup.py script'
 print '    * This will leave django-skeleton as a clean folder with your fresh django project inside'
 print 'Would you like to do this? [y/n] (default y): '
