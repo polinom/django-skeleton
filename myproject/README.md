@@ -1,1 +1,1 @@
-# This directory is where the static files will be collected
+# This directory is where static files will be placed
