@@ -106,7 +106,7 @@ def replace_text_infile(filepath, find, replace):
 ################################################################################
 
 # make sure we were executed from the proper directory
-if not CURRENT_DIRECTORY.endswith('django-skeleton'):
+if not (CURRENT_DIRECTORY.endswith('django-skeleton') or 'mschettler-django-skeleton-' in CURRENT_DIRECTORY):
     print 'Error: Script cannot continue'
     print '    * We seem to be in directory "%s", but we need to be in the django-skeleton/ directory. Please navigate there and run this script again.' % CURRENT_DIRECTORY
     print '    * If you need to re-download a fresh copy of this repo, please execute the command "%s"' % GITHUB_CLONE_CMD
