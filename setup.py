@@ -9,7 +9,7 @@ CURRENT_PROJECT_NAME = 'myproject'
 CURRENT_APP_NAME     = 'myfirstapp'
 GITHUB_CLONE_CMD     = 'git clone https://github.com/mschettler/django-skeleton.git'
 
-BAR80 = '-'*80
+BAR80 = '-'*100  # the cake is a lie
 
 ################################################################################
 # Helper functions
@@ -127,6 +127,10 @@ if not CURRENT_PROJECT_NAME in get_folder_list_for_directory(CURRENT_DIRECTORY):
 ################################################################################
 
 inputerror = True
+
+print BAR80
+print 'Welcome to django-skeleton! This script will ask you for a project and first app name. Enjoy!'
+
 
 while inputerror:
 
@@ -256,10 +260,10 @@ if not file_string_replace:
 
 
 # print 'We are about to rename %d files, and modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache), len(file_string_replace))
-print 'We are about to modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache) + len(file_string_replace))
-if 'n' in get_user_feedback().lower():
-    print 'Okay, we won\'t do anything. Goodbye!'
-    sys.exit(0)
+# print 'We are about to modify %d files. Please confirm that you would like to do this [y/n] (default y): ' % (len(rename_cache) + len(file_string_replace))
+# if 'n' in get_user_feedback().lower():
+#     print 'Okay, we won\'t do anything. Goodbye!'
+#     sys.exit(0)
 
 
 ################################################################################

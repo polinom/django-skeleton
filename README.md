@@ -8,7 +8,7 @@ After cloning the repo,
 
     git clone https://github.com/mschettler/django-skeleton.git
 
-Run the setup to name your project:
+Run the setup to name your project,
     
     python setup.py
 
@@ -17,6 +17,12 @@ View your work, navigate to localhost:8000
     python manage.py runserver
     
 Done!
+
+
+
+#####One line setup:
+
+	git clone https://github.com/mschettler/django-skeleton.git && cd django-skeleton && python setup.py
 
 
 #Screenshot
