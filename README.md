@@ -1,17 +1,18 @@
 django-skeleton
 ===============
 
-An easy-to-use standard project structure for a fresh Django project. Includes Twitter Bootstrap http://twitter.github.com/bootstrap/.
+An easy-to-use standard project structure for a fresh Django project. Includes Twitter Bootstrap http://twitter.github.com/bootstrap/
 
-after cloning the repo
+===
+After cloning the repo,
 
     git clone https://github.com/mschettler/django-skeleton.git
 
-simply execute
+Run the setup to name your project:
     
     python setup.py
 
-last step
+View your work, navigate to localhost:8000
 
     python manage.py runserver
     
@@ -26,7 +27,7 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 #Versions Used
     Django 1.4.2
-    Twitter Bootstrap 2.1.1
+    Twitter Bootstrap 2.2.1
 
 
 #Django Skeleton Project
