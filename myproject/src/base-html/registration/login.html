@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block container %}
+    <div class="content">
+        <div class="page-header">
+        </div>
+        {% if form.errors %}
+            <div class="alert alert-block fade in">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                <p><strong>{% trans "Oh snap!" %}</strong> {% trans "Please enter a correct username and password. Note that both fields are case-sensitive." %}</p>
+            </div>
+        {% endif %}
+        <form action="{% url django.contrib.auth.views.login %}" method="post" class="form-signin">{% csrf_token %}
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input type="text" placeholder="Email address" class="input-block-level">
+            <input type="password" placeholder="Password" class="input-block-level">
+            <label class="checkbox">
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            <a class="btn" href="/accounts/register/">Register</a>
+            <a class="btn" href="{% url django.contrib.auth.views.password_reset %}">Forgot Password</a>
+        </form> 
+        <script type="text/javascript">
+            // $(function(){
+            //     $(".alert-message").alert();
+            //     $('#mainForm').submit(function(){
+            //         $('#submit').button('loading');
+            //     })
+            // });
+            // document.forms[1].elements[2].focus();
+        </script>
+    </div>
+{% endblock %}

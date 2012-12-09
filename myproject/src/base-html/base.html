@@ -1,0 +1,136 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to django-skeleton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: #F5F5F5;
+            padding-bottom: 40px;
+            padding-top: 40px;
+        }
+        .form-signin {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E5E5;
+            border-radius: 5px 5px 5px 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            margin: 0 auto 20px;
+            max-width: 300px;
+            padding: 19px 29px 29px;
+        }
+        .form-signin .form-signin-heading, .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+        .form-signin input[type="text"], .form-signin input[type="password"] {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 7px 9px;
+        }
+        a {
+            outline: none;
+            text-decoration: none;
+            outline-style: none; 
+            -moz-outline-style:none;
+        }
+        .btn:focus, a:active, a:focus { 
+            outline: none;
+            text-decoration: none;
+            outline-style: none; 
+            -moz-outline-style:none;
+        }
+        select:focus,
+        input[type="file"]:focus,
+        input[type="radio"]:focus,
+        input[type="checkbox"]:focus {
+            outline: none;
+            text-decoration: none;
+            outline-style: none; 
+            -moz-outline-style:none;
+        }
+    </style>
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">django-skeleton</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">{% trans "Home" %}</a></li>
+              <li><a href="http://mschettler.com">{% trans "About" %}</a></li>
+              <li><a href="mailto:mschettler@gmail.com">{% trans "Contact" %}</a></li>
+            </ul>
+            {% if user.is_authenticated %}
+                <ul class="nav pull-right">
+                    <li>
+                        <div class="btn-group"><a href="#" data-toggle="dropdown" class="dropdown-toggle btn"><i class="icon-user"></i> {{ user.username }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url django.contrib.auth.views.password_change %}">{% trans "Change password" %}</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{% url django.contrib.auth.views.logout %}">{% trans 'Logout' %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            {% endif %}
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    {% block container %}
+        <div class="content">
+            <div class="page-header">
+            </div>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url django.contrib.auth.views.logout %}">{% trans "Log out" %}</a></li>
+                    <li><a href="{% url django.contrib.auth.views.password_change %}">{% trans "Change password" %}</a></li>
+                    <li><a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Reset my password" %}</a></li>
+                {% else %}
+                    {% if form.errors %}
+                        <div class="alert alert-block fade in">
+                            <a class="close" data-dismiss="alert" href="#">×</a>
+                            <p><strong>{% trans "Oh snap!" %}</strong> {% trans "Please enter a correct username and password. Note that both fields are case-sensitive." %}</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    {% endblock %}
+    <hr>
+    <footer>
+        <p>By <a href="mailto:mschettler@gmail.com">Matthew Schettler</a> &copy; <a href="http://mschettler.com/">mschettler.com</a> 2013</p>
+    </footer>
+    </div> <!-- /container -->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+  </body>
+</html>
