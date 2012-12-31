@@ -1,7 +1,9 @@
 django-skeleton
 ===============
 
-An easy-to-use standard project structure for a fresh Django project. Includes Twitter Bootstrap http://twitter.github.com/bootstrap/
+An easy-to-use standard project structure for a fresh Django project.
+
+* Includes Twitter Bootstrap http://twitter.github.com/bootstrap/
 
 ===
 After cloning the repo,
@@ -37,8 +39,9 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 
 #Django Skeleton Project
-
+    ├── README.md
     ├── myproject
+    │   ├── README.md
     │   ├── manage.py
     │   ├── myfirstapp
     │   │   ├── __init__.py
@@ -65,10 +68,11 @@ www.youtube.com/watch?v=4GLiMWXo0ws
     │       └── js
     │           ├── bootstrap.js
     │           └── bootstrap.min.js
+    ├── screenshot.png
+    └── setup.py
 
     8 directories, 23 files
 
-    
     
     
 #Twitter Bootstrap
