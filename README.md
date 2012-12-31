@@ -39,35 +39,35 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 #Django Skeleton Project
 
     ├── myproject
-        ├── README.md
-        ├── manage.py
-        ├── myfirstapp
-        │   ├── __init__.py
-        │   ├── models.py
-        │   ├── templates
-        │   │   └── home.html
-        │   ├── tests.py
-        │   └── views.py
-        ├── myproject
-        │   ├── __init__.py
-        │   ├── settings.py
-        │   ├── urls.py
-        │   └── wsgi.py
-        └── src
-            ├── css
-            │   ├── bootstrap-responsive.css
-            │   ├── bootstrap-responsive.min.css
-            │   ├── bootstrap.css
-            │   └── bootstrap.min.css
-            ├── ico
-            ├── img
-            │   ├── glyphicons-halflings-white.png
-            │   └── glyphicons-halflings.png
-            └── js
-                ├── bootstrap.js
-                └── bootstrap.min.js
-    
-    9 directories, 34 files
+    │   ├── manage.py
+    │   ├── myfirstapp
+    │   │   ├── __init__.py
+    │   │   ├── models.py
+    │   │   ├── templates
+    │   │   │   └── home.html
+    │   │   ├── tests.py
+    │   │   ├── urls.py
+    │   │   └── views.py
+    │   ├── myproject
+    │   │   ├── __init__.py
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   └── src
+    │       ├── css
+    │       │   ├── bootstrap-responsive.css
+    │       │   ├── bootstrap-responsive.min.css
+    │       │   ├── bootstrap.css
+    │       │   └── bootstrap.min.css
+    │       ├── img
+    │       │   ├── glyphicons-halflings-white.png
+    │       │   └── glyphicons-halflings.png
+    │       └── js
+    │           ├── bootstrap.js
+    │           └── bootstrap.min.js
+
+    8 directories, 23 files
+
     
     
     
