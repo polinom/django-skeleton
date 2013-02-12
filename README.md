@@ -34,7 +34,7 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 
 #Versions Used
-    Django 1.4.2
+    Django 1.4.3
     Twitter Bootstrap 2.3.0
 
 
