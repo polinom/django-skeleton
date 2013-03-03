@@ -34,8 +34,8 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 
 #Versions Used
-    Django 1.4.3
-    Twitter Bootstrap 2.3.0
+    Django 1.4.5
+    Twitter Bootstrap 2.3.1
 
 
 #Django Skeleton Project
