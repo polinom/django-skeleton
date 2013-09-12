@@ -1,1 +1,1 @@
-# This directory is where static files will be placed
+# src/ is the directory where static files will be placed
