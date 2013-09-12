@@ -3,7 +3,7 @@ django-skeleton
 
 An easy-to-use standard project structure for a fresh Django project.
 
-* Includes Twitter Bootstrap http://twitter.github.com/bootstrap/
+* Includes Twitter Bootstrap http://getbootstrap.com/
 
 ===
 After cloning the repo,
@@ -31,6 +31,7 @@ Done!
 ![Example](https://raw.github.com/mschettler/django-skeleton/master/screenshot.png)
 #Video Demo
 www.youtube.com/watch?v=4GLiMWXo0ws
+###### (Video may not represent current version)
 
 
 #Versions Used
@@ -58,25 +59,33 @@ www.youtube.com/watch?v=4GLiMWXo0ws
     │   │   └── wsgi.py
     │   └── src
     │       ├── css
-    │       │   ├── bootstrap-responsive.css
-    │       │   ├── bootstrap-responsive.min.css
+    │       │   ├── bootstrap-theme.css
+    │       │   ├── bootstrap-theme.min.css
     │       │   ├── bootstrap.css
     │       │   └── bootstrap.min.css
-    │       ├── img
-    │       │   ├── glyphicons-halflings-white.png
-    │       │   └── glyphicons-halflings.png
+    │       ├── fonts
+    │       │   ├── glyphicons-halflings-regular.eot
+    │       │   ├── glyphicons-halflings-regular.svg
+    │       │   ├── glyphicons-halflings-regular.ttf
+    │       │   └── glyphicons-halflings-regular.woff
     │       └── js
     │           ├── bootstrap.js
-    │           └── bootstrap.min.js
+    │           ├── bootstrap.min.js
+    │           ├── html5shiv.js
+    │           └── respond.min.js
     ├── screenshot.png
     └── setup.py
 
-    8 directories, 23 files
+    8 directories, 27 files
+
 
 
 
 #Twitter Bootstrap
-http://twitter.github.com/bootstrap/
+http://getbootstrap.com/
 
 #Django
 https://www.djangoproject.com/
+
+#BTC Donate
+18ZYJyeFAVUiGeWEZRu63NGwrr1ecz1eVR   (thanks!!)
