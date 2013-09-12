@@ -11,13 +11,13 @@ After cloning the repo,
     git clone https://github.com/mschettler/django-skeleton.git
 
 Run the setup to name your project,
-    
+
     python setup.py
 
 View your work, navigate to localhost:8000
 
     python manage.py runserver
-    
+
 Done!
 
 
@@ -34,8 +34,8 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 
 #Versions Used
-    Django 1.4.5
-    Twitter Bootstrap 2.3.1
+    Django 1.4.7
+    Twitter Bootstrap 3.0.0
 
 
 #Django Skeleton Project
@@ -73,8 +73,8 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
     8 directories, 23 files
 
-    
-    
+
+
 #Twitter Bootstrap
 http://twitter.github.com/bootstrap/
 
