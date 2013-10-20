@@ -1,6 +1,6 @@
 # project wide urls
 from django.conf.urls import patterns, include, url
-from django.views.generic.simple import redirect_to
+from django.views.generic import RedirectView
 from django.core.urlresolvers import reverse
 from django.contrib import admin
 admin.autodiscover()
@@ -20,6 +20,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # catch all, redirect to myfirstapp home view
-    url(r'.*', redirect_to, {'url': '/myfirstapp/home'}),
+    url(r'.*', RedirectView.as_view(url='/myfirstapp/home')),
 
 )
