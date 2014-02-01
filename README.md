@@ -24,7 +24,7 @@ Done!
 
 #####One line setup:
 
-	git clone https://github.com/mschettler/django-skeleton.git && cd django-skeleton && python setup.py
+	git clone https://github.com/polinom/django-skeleton.git && cd django-skeleton && python setup.py
 
 
 #Screenshot
@@ -35,8 +35,8 @@ www.youtube.com/watch?v=4GLiMWXo0ws
 
 
 #Versions Used
-    Django 1.5.4
-    Twitter Bootstrap 3.0.0
+    Django 1.6.1
+    Twitter Bootstrap 3.1.0
 
 
 #Django Skeleton Project
